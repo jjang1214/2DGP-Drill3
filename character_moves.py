@@ -37,7 +37,7 @@ def clear_and_draw():
 move_rect=False
 
 def move_rectangle():
-    global character_x, character_y, move_rect, move_cir
+    global character_x, character_y, move_rect, move_tri
 
     if character_x + character_width/2 < 800 and character_y == 90:
         character_x += character_speed
@@ -46,7 +46,7 @@ def move_rectangle():
 
         if character_x == 400:
             move_rect=True
-            move_cir=False
+            move_tri=False
 
     elif character_x + character_width/2 == 800 and character_y + character_height/2 < 600:
         character_y += character_speed
@@ -65,10 +65,16 @@ def move_rectangle():
 
 
 
+tri_a=[400,500]
+tri_b=[200,90]
+tri_c=[600,90]
+
+move_tri=True
 
 def move_triangle():
-    #clear_canvas_now()
-    pass
+    global character_x, character_y, move_tri, move_cir
+
+
 
 
 
@@ -97,10 +103,11 @@ def move_circle():
 
 
 while True:
-    if not move_rect and move_cir:
+    if not move_rect and move_tri and move_cir:
         move_rectangle()
 
-    # move_triangle()
+    elif move_rect and not move_tri and move_cir:
+        move_triangle()
 
-    elif move_rect and not move_cir:
+    elif move_rect and move_tri and move_cir:
         move_circle()
