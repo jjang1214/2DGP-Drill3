@@ -1,4 +1,5 @@
 from pico2d import *
+from math import *
 
 open_canvas()
 
@@ -36,7 +37,7 @@ def clear_and_draw():
 move_rect=False
 
 def move_rectangle():
-    global character_x, character_y, move_rect
+    global character_x, character_y, move_rect, move_cir
 
     if character_x + character_width/2 < 800 and character_y == 90:
         character_x += character_speed
@@ -45,6 +46,7 @@ def move_rectangle():
 
         if character_x == 400:
             move_rect=True
+            move_cir=False
 
     elif character_x + character_width/2 == 800 and character_y + character_height/2 < 600:
         character_y += character_speed
@@ -70,17 +72,35 @@ def move_triangle():
 
 
 
-move_cir=False
+move_cir=True
 
 def move_circle():
-    global character_x, character_y, move_cir, angle
+    global character_x, character_y, move_rect, move_cir, angle
+
+    character_x = center_x + r * cos(radians(angle))
+    character_y = center_y + r * sin(radians(angle))
+
+    angle -= character_speed / 2
+    if angle <= 0:
+        angle = 360
+
+    clear_and_draw()
+
+    if angle == 270:
+        move_rect = False
+        move_cir = True
+
+        character_x = 400
+        character_y = 90
 
 
 
 
 while True:
-    if not move_rect:
+    if not move_rect and move_cir:
         move_rectangle()
 
     # move_triangle()
-    # move_circle()
+
+    elif move_rect and not move_cir:
+        move_circle()
