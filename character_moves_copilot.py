@@ -91,3 +91,5 @@ while running:
             running = False
 
 close_canvas()
+
+# copilot의 코딩
