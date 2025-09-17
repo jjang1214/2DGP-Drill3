@@ -109,5 +109,5 @@ while True:
     elif move_rect and not move_tri and move_cir:
         move_triangle()
 
-    elif move_rect and move_tri and move_cir:
+    elif move_rect and move_tri and not move_cir:
         move_circle()
