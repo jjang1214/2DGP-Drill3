@@ -144,3 +144,5 @@ while True:
 
     elif move_rect and move_tri and not move_cir:
         move_circle()
+
+
