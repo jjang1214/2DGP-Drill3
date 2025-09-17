@@ -15,7 +15,7 @@ character_y=90
 character_width=40
 character_height=80
 
-character_speed=2
+character_speed=10
 
 
 center_x=400
@@ -69,10 +69,43 @@ tri_a=[400,500]
 tri_b=[200,90]
 tri_c=[600,90]
 
+triangle=[tri_a, tri_b, tri_c]
+index=1
+
+tri_t=0.05
+count=int(1/tri_t)
+
+start_x,start_y=character_x,character_y
+
 move_tri=True
 
 def move_triangle():
-    global character_x, character_y, move_tri, move_cir
+    global character_x, character_y, index, tri_t, count, start_x, start_y, move_tri, move_cir
+
+    target_x, target_y = triangle[index]
+
+    character_x=character_x+(target_x-start_x)*tri_t
+    character_y=character_y+(target_y-start_y)*tri_t
+    count-=1
+
+    clear_and_draw()
+
+    #print(character_x, character_y)
+
+
+    if count==0:
+        count=1/tri_t
+        index-=1
+        start_x,start_y=character_x,character_y
+        #print('도착')
+
+        if index == -1:
+            index=2
+
+    if character_x==400 and character_y==90:
+        index = 1
+        move_tri = True
+        move_cir = False
 
 
 
