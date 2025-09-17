@@ -5,7 +5,10 @@ open_canvas()
 grass=load_image('grass.png')
 character=load_image('character.png')
 
-character.draw_now(400, 90)
+character_x=400
+character_y=90
+
+character.draw_now(character_x, character_y)
 grass.draw_now(400, 30)
 
 def move_rectangle():
