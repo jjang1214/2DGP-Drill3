@@ -19,8 +19,21 @@ character.draw_now(character_x, character_y)
 grass.draw_now(400, 30)
 
 def move_rectangle():
-    #clear_canvas_now()
-    pass
+    if character_x + character_width/2 < 800 and character_y == 90:
+        #clear_canvas_now()
+        pass
+
+    elif character_x + character_width/2 == 800 and character_y + character_height/2 < 600:
+        #clear_canvas_now()
+        pass
+
+    elif character_x - character_width/2 > 0 and character_y + character_height/2 == 600:
+        #clear_canvas_now()
+        pass
+
+    elif character_x - character_width/2 == 0 and character_y > 90:
+        #clear_canvas_now()
+        pass
 
 
 
