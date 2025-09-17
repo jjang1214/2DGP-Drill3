@@ -27,13 +27,19 @@ def clear_and_draw():
     character.draw_now(character_x, character_y)
     delay(0.01)
 
+
+move_rect=False
+
 def move_rectangle():
-    global character_x, character_y
+    global character_x, character_y, move_rect
 
     if character_x + character_width/2 < 800 and character_y == 90:
         character_x += character_speed
 
         clear_and_draw()
+
+        if character_x == 400:
+            move_rect=True
 
     elif character_x + character_width/2 == 800 and character_y + character_height/2 < 600:
         character_y += character_speed
@@ -67,6 +73,8 @@ def move_circle():
 
 
 while True:
-    move_rectangle()
-    move_triangle()
-    move_circle()
+    if not move_rect:
+        move_rectangle()
+
+    # move_triangle()
+    # move_circle()
