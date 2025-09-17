@@ -17,6 +17,11 @@ character_height=80
 character_speed=2
 
 
+center_x=400
+center_y=300
+angle=270
+r=center_y-character_y
+
 
 character.draw_now(character_x, character_y)
 grass.draw_now(glass_x, glass_y)
@@ -65,9 +70,10 @@ def move_triangle():
 
 
 
+move_cir=False
+
 def move_circle():
-    #clear_canvas_now()
-    pass
+    global character_x, character_y, move_cir, angle
 
 
 
